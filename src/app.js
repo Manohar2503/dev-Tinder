@@ -2,9 +2,24 @@ const express = require("express");
 
 const app= express();
  
-app.use("/user",(req,res)=>{
-res.send("user deatils in server getting answer");
-});
+app.get("/user",
+    (req,res,next)=>{
+//res.send("getting data from users");
+next();
+},
+(req,res,next)=>{
+   // res.send("response2");
+    next();
+},
+(req,res,next)=>{
+   // res.send("response3");
+    next();
+},
+(req,res,next)=>{
+    res.send("response4");
+}
+);
+
 
 app.listen(2020,()=>{
     console.log("server is successfully created!");
